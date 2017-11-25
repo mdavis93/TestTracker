@@ -1,0 +1,134 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+*/
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+$cortiva-blue: rgb(57, 81, 115);
+$cortiva-gold: rgb(208, 151, 60);
+$cortiva-grey: rgb(199, 197, 197);
+
+* {
+  box-sizing: border-box;
+}
+
+#index {
+  border: 1px solid green
+}
+body {
+  margin-top: 50px;
+  background-color: $cortiva-grey;
+}
+
+.flexbox.full-height {
+  height: 90vh;
+}
+
+.jumbotron {
+  position: relative;
+  background-color: $cortiva-blue;
+  max-width: 600px;
+  margin: auto auto;
+  vertical-align: middle;
+
+  img {
+    margin-bottom: 30px;
+  }
+}
+
+.flexbox {
+  display: flex;
+  align-content: center;
+}
+
+.flex-center {
+  height: 50px;
+  margin: 0 auto;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.logo {
+  background-color: $cortiva-blue;
+  padding: 0 5px;
+}
+
+.row#roleSummary {
+  height: 150px;
+  border: 1px solid green;
+}
+
+#sidebar-wrapper {
+  z-index: 1;
+  position: absolute;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  overflow-y: hidden;
+  background: $cortiva-blue;
+  transition: 0.1s;
+  color: rgb(199, 197, 197)
+}
+
+#sidebar_logo {
+  margin-bottom: 10px;
+}
+
+#main_content {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+  transition: 0.1s;
+}
+
+#wrapper.displayMenu #sidebar-wrapper {
+  padding: 10px;
+  padding-top: 15px;
+  width: 250px;
+}
+
+#wrapper.displayMenu #main_content {
+  padding-left: 250px;
+}
+
+.sidebar-nav {
+  padding: 0;
+  list-style: none;
+
+  li {
+  text-indent: 20px;
+  line-height: 40px;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+}
+
+.borderless * {
+  border: none !important;
+}
+#recordChangeInfo {
+  background-color: yellow;
+  opacity: .5;
+  text-align: center;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}

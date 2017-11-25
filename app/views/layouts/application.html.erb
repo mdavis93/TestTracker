@@ -4,11 +4,42 @@
     <title>TestTracker</title>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <%= render 'layouts/sidebar' %>
+
+      <div id="main_content">
+        <%= render 'top-menu-bar' %>
+
+        <div class="container-fluid">
+
+          <% if flash[:notice] %>
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= flash[:notice] %>
+            </div>
+          <% elsif flash[:alert] %>
+            <div class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(".navbar-brand").click( (e) => {
+        e.preventDefault();
+        $("#wrapper").toggleClass("displayMenu");
+      });
+    </script>
   </body>
 </html>
