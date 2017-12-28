@@ -5,16 +5,16 @@
     <%= csrf_meta_tags %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <div id="wrapper">
+    <div id="wrapper" class="displayMenu">
       <%= render 'layouts/sidebar' %>
 
       <div id="main_content">
-        <%= render 'top-menu-bar' %>
+        <%= render 'welcome/top-menu-bar' %>
 
         <div class="container-fluid">
 
@@ -36,7 +36,7 @@
     </div>
 
     <script>
-      $(".navbar-brand").click( (e) => {
+      $(".navbar-brand").click( function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("displayMenu");
       });

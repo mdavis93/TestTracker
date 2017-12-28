@@ -26,7 +26,7 @@ $cortiva-grey: rgb(199, 197, 197);
 }
 
 #index {
-  border: 1px solid green
+  border: 10px solid green
 }
 body {
   margin-top: 50px;
@@ -36,8 +36,17 @@ body {
 .flexbox.full-height {
   height: 90vh;
 }
-
 .jumbotron {
+  background-color: $cortiva-blue;
+  max-height: 240px;
+
+  & img {
+    max-height: 145px;
+  }
+}
+
+.jumbotron.gatekeeper {
+  max-height: 600px;
   position: relative;
   background-color: $cortiva-blue;
   max-width: 600px;
@@ -70,24 +79,27 @@ body {
 
 .row#roleSummary {
   height: 150px;
-  border: 1px solid green;
+  border-bottom: 5px solid $cortiva-gold;
 }
 
 #sidebar-wrapper {
   z-index: 1;
-  position: absolute;
-  width: 0;
-  padding: 0;
+  position: fixed;
+  width: 250px;
+  padding: 15px 10px 10px 10px;
+  left: -250px;
   margin: 0;
-  height: 100vh;
+  height: 96vh;
   overflow-y: hidden;
   background: $cortiva-blue;
-  transition: 0.1s;
+  transition: 0.1s linear;
   color: rgb(199, 197, 197)
 }
 
 #sidebar_logo {
+  padding-bottom: 10px;
   margin-bottom: 10px;
+  border-bottom: 5px solid $cortiva-gold;
 }
 
 #main_content {
@@ -98,9 +110,8 @@ body {
 }
 
 #wrapper.displayMenu #sidebar-wrapper {
-  padding: 10px;
-  padding-top: 15px;
-  width: 250px;
+  padding: 15px 10px 10px 10px;
+  left: 0;
 }
 
 #wrapper.displayMenu #main_content {
@@ -122,13 +133,20 @@ body {
   }
 }
 
-.borderless * {
-  border: none !important;
+.micro_menu_button{
+  font-size: 14pt;
+
+  &:hover {
+    color: $cortiva-gold;
+    cursor: pointer;
+  }
 }
-#recordChangeInfo {
-  background-color: yellow;
-  opacity: .5;
-  text-align: center;
-  line-height: 1.5em;
-  margin-bottom: 20px;
+
+.count_badge {
+  color: white;
+  background-color: $cortiva-gold;
+  display: flex;
+  position: absolute;
+  right: 1px;
+  top: 2px;
 }
