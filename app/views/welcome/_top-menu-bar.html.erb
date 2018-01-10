@@ -8,55 +8,57 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
-        <small><span class="glyphicon glyphicon-menu-hamburger"></span></small>
-        &emsp;Test Tracker
-      </a>
+      <%= link_to 'Test Tracker', root_path, class: 'navbar-brand' %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <p class="navbar-text">Lushanda Johnson, Instructor</p>
-        <% if user_signed_in? %>
+        <% if current_user %>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Reports</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Login</a></li>
+              <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
             </ul>
           </li>
-        <% else %>
-          <li class="dropdown">
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <p class="navbar-text">Lushanda Johnson, Instructor</p>
+        <li class="dropdown">
+          <% if current_user %>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Login</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-user"></span>&emsp;My Profile</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-education"></span>&emsp;My Courses</a></li>
+              <li><a href="#">Another Link</a></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="glyphicon glyphicon-log-out"></span>&emsp14;Logout
+                  <% end %>
+              </li>
+            </ul>
+          <% else %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Login", new_user_session_path %></li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Request Access</a></li>
             </ul>
-          </li>
-        <% end %>
+          <% end %>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

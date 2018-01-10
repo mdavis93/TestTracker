@@ -87,7 +87,7 @@ body {
   position: fixed;
   width: 250px;
   padding: 15px 10px 10px 10px;
-  left: -250px;
+  left: 0;
   margin: 0;
   height: 96vh;
   overflow-y: hidden;
@@ -109,28 +109,8 @@ body {
   transition: 0.1s;
 }
 
-#wrapper.displayMenu #sidebar-wrapper {
-  padding: 15px 10px 10px 10px;
-  left: 0;
-}
-
-#wrapper.displayMenu #main_content {
+#wrapper #main_content {
   padding-left: 250px;
-}
-
-.sidebar-nav {
-  padding: 0;
-  list-style: none;
-
-  li {
-  text-indent: 20px;
-  line-height: 40px;
-
-    a {
-      display: block;
-      text-decoration: none;
-    }
-  }
 }
 
 .micro_menu_button{
@@ -149,4 +129,19 @@ body {
   position: absolute;
   right: 1px;
   top: 2px;
+}
+
+.cortiva-gold-background {
+  background-color: $cortiva-gold;
+  padding: 1em;
+  border-radius: 5px;
+
+  & a {
+    color: #0A162A77;
+
+    &:hover {
+      text-decoration: none;
+      color: #2f8cee;
+    }
+  }
 }

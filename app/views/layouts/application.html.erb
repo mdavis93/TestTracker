@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <div id="wrapper" class="displayMenu">
+    <div id="wrapper">
       <%= render 'layouts/sidebar' %>
 
       <div id="main_content">
@@ -34,12 +34,5 @@
         </div>
       </div>
     </div>
-
-    <script>
-      $(".navbar-brand").click( function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("displayMenu");
-      });
-    </script>
   </body>
 </html>

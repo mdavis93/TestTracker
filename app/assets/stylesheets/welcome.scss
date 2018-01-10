@@ -21,4 +21,12 @@
     transition-duration: 0.25s;
     filter: grayscale(1);
   }
+
+  & .caption a {
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
