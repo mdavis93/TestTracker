@@ -6,8 +6,8 @@
   </div>
   <div class="row" id="roleSummary">
     <div class="col-sm-12">
-      <h4 class="text-center" style="margin-bottom: 0">Birgitta Salomonsson</h4>
-      <h6 class="text-center" style="margin-top: 0; font-style: italic">Education Manager</h6>
+      <h4 class="text-center" style="margin-bottom: 0"><%= current_user.display_name(false) %></h4>
+      <h6 class="text-center" style="margin-top: 0; font-style: italic"><%= current_user.role.humanize.titleize %></h6>
     </div>
   </div>
   <form class="navbar-form navbar-left">

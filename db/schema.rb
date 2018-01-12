@@ -10,7 +10,80 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207063019) do
+ActiveRecord::Schema.define(version: 20180112043903) do
+
+  create_table "cohorts", force: :cascade do |t|
+    t.string "cohort_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cohort_id"], name: "index_cohorts_on_cohort_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "course_id", null: false
+    t.integer "instructor_id"
+    t.integer "session_id"
+    t.boolean "repeat", default: false, null: false
+    t.integer "shift", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_courses_on_course_id"
+    t.index ["instructor_id"], name: "index_courses_on_instructor_id"
+    t.index ["session_id"], name: "index_courses_on_session_id"
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "campus_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_instructors_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.boolean "repeat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_schedules_on_course_id"
+    t.index ["student_id"], name: "index_schedules_on_student_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "name", null: false
+    t.date "first_day", null: false
+    t.date "last_day", null: false
+    t.date "deadline", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_sessions_on_name"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.integer "cohort_id"
+    t.string "name", null: false
+    t.integer "status", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cohort_id"], name: "index_students_on_cohort_id"
+    t.index ["name"], name: "index_students_on_name"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.integer "test_num", default: 1, null: false
+    t.boolean "retake", default: false, null: false
+    t.boolean "makeup", default: false, null: false
+    t.integer "mod_by", null: false
+    t.integer "test_type", default: 0, null: false
+    t.integer "result", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_tests_on_course_id"
+    t.index ["student_id"], name: "index_tests_on_student_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,9 +105,13 @@ ActiveRecord::Schema.define(version: 20171207063019) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fname"
+    t.string "lname"
+    t.integer "role"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role"], name: "index_users_on_role"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 

@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
+  gem 'web-console'
 end
 
 gem 'autoprefixer-rails'
