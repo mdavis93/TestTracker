@@ -16,6 +16,7 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'font-awesome';
 
 $cortiva-blue: rgb(57, 81, 115);
 $cortiva-gold: rgb(208, 151, 60);
@@ -83,17 +84,7 @@ body {
 }
 
 #sidebar-wrapper {
-  z-index: 1;
-  position: fixed;
-  width: 250px;
-  padding: 15px 10px 10px 10px;
-  left: 0;
-  margin: 0;
-  height: 96vh;
-  overflow-y: hidden;
-  background: $cortiva-blue;
-  transition: 0.1s linear;
-  color: rgb(199, 197, 197)
+  display: none;
 }
 
 #sidebar_logo {
@@ -110,7 +101,7 @@ body {
 }
 
 #wrapper #main_content {
-  padding-left: 250px;
+  padding-left: 0;
 }
 
 .micro_menu_button{
@@ -143,5 +134,38 @@ body {
       text-decoration: none;
       color: #2f8cee;
     }
+  }
+}
+
+.font-3x {
+  font-size: 3em;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+  #sidebar-wrapper {
+    display: block;
+    z-index: 1;
+    position: fixed;
+    width: 250px;
+    padding: 15px 10px 10px 10px;
+    left: 0;
+    margin: 0;
+    height: 96vh;
+    overflow-y: hidden;
+    background: $cortiva-blue;
+    transition: 0.1s linear;
+    color: rgb(199, 197, 197);
+  }
+
+  #wrapper #main_content {
+    padding-left: 250px;
   }
 }

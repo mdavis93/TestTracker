@@ -4,32 +4,34 @@
       <%= image_tag("logo-cortiva-massage-h.svg") %>
     </div>
   </div>
-  <div class="row" id="roleSummary">
-    <div class="col-sm-12">
-      <h4 class="text-center" style="margin-bottom: 0"><%= current_user.display_name(false) %></h4>
-      <h6 class="text-center" style="margin-top: 0; font-style: italic"><%= current_user.role.humanize.titleize %></h6>
+  <% if current_user %>
+    <div class="row" id="roleSummary">
+      <div class="col-sm-12">
+        <h4 class="text-center" style="margin-bottom: 0"><%= current_user.display_name(false) %></h4>
+        <h6 class="text-center" style="margin-top: 0; font-style: italic"><%= current_user.role.humanize.titleize %></h6>
+      </div>
     </div>
-  </div>
-  <form class="navbar-form navbar-left">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
+    <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-sm-12">
+        <p>
+          Micro Menu, most likely won't be used and will be
+        phased out on future revisions.  I decided to leave
+        the placeholder here just in case.
+        </p>
+        <i class="fa fa-user-plus micro_menu_button"></i>
+        <i class="fa fa-envelope-open micro_menu_button"></i>
+        <i class="fa fa-bullhorn micro_menu_button"></i>
+      </div>
     </div>
-  </form>
-  <div class="row">
-    <div class="col-sm-12">
-      <p>
-        Micro Menu, most likely won't be used and will be
-      phased out on future revisions.  I decided to leave
-      the placeholder here just in case.
-      </p>
-      <span class="glyphicon glyphicon-user micro_menu_button"><small><sup><span class="glyphicon glyphicon-plus" style="font-size: 0.75em; position: relative; top: -0.4em;"></span></sup></small></span>
-      <span class="glyphicon glyphicon-envelope micro_menu_button"></span>
-      <span class="glyphicon glyphicon-bullhorn micro_menu_button"></span>
-    </div>
-  </div>
+  <% end %>
 </div>

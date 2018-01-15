@@ -1,2 +1,106 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"><%= "#{@course.course_id}" %> &mdash; <%= "#{@course.instructor.name}" %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-bullhorn fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="font-3x">26</div>
+            <div>New Comments!</div>
+          </div>
+        </div>
+      </div>
+      <a href="#">
+        <div class="panel-footer">
+          <span class="pull-left">View Details</span>
+          <span class="pull-right"><span class="glyphicon glyphicon-menu-right"></span></span>
+          <div class="clearfix"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<% if @course.students.count > 0 %>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            'Written Test 1A'
+          </div>
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th>Cohort</th>
+              <th>Student</th>
+              <th>Absent</th>
+              <th>Pass</th>
+              <th>Markdown</th>
+              <th>Fail</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% @written_exams.each do |exam| %>
+              <% if exam.session == 'A' %>
+                <tr>
+                  <td><%= exam.student.cohort.cohort_id %></td>
+                  <td><%= exam.student.name %></td>
+                  <td><%= fa_icon 'circle' if exam.result == 'absent' %></td>
+                  <td><%= fa_icon 'check' if exam.result == 'pass' %></td>
+                  <td><%= fa_icon 'check-circle' if exam.result == 'markdown' %></td>
+                  <td><%= fa_icon 'circle-thin' if exam.result == 'fail' %></td>
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          'Practical Test 1A'
+        </div>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Cohort</th>
+            <th>Student</th>
+            <th>Absent</th>
+            <th>Pass</th>
+            <th>Markdown</th>
+            <th>Fail</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <% @practical_exams.each do |exam| %>
+            <% if exam.session == 'A' %>
+              <tr>
+                <td><%= exam.student.cohort.cohort_id %></td>
+                <td><%= exam.student.name %></td>
+                <td><%= fa_icon 'circle' if exam.result == 'absent' %></td>
+                <td><%= fa_icon 'check' if exam.result == 'pass' %></td>
+                <td><%= fa_icon 'check-circle' if exam.result == 'markdown' %></td>
+                <td><%= fa_icon 'circle-thin' if exam.result == 'fail' %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

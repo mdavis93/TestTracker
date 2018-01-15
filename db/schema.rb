@@ -23,13 +23,27 @@ ActiveRecord::Schema.define(version: 20180112043903) do
     t.string "course_id", null: false
     t.integer "instructor_id"
     t.integer "session_id"
-    t.boolean "repeat", default: false, null: false
     t.integer "shift", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_courses_on_course_id"
     t.index ["instructor_id"], name: "index_courses_on_instructor_id"
     t.index ["session_id"], name: "index_courses_on_session_id"
+  end
+
+  create_table "exams", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.integer "exam_num", default: 1, null: false
+    t.boolean "retake", default: false, null: false
+    t.boolean "makeup", default: false, null: false
+    t.integer "mod_by", null: false
+    t.integer "exam_type", default: 0, null: false
+    t.integer "result", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_exams_on_course_id"
+    t.index ["student_id"], name: "index_exams_on_student_id"
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -43,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180112043903) do
   create_table "schedules", force: :cascade do |t|
     t.integer "course_id"
     t.integer "student_id"
-    t.boolean "repeat"
+    t.boolean "repeat", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_schedules_on_course_id"
@@ -68,21 +82,6 @@ ActiveRecord::Schema.define(version: 20180112043903) do
     t.datetime "updated_at", null: false
     t.index ["cohort_id"], name: "index_students_on_cohort_id"
     t.index ["name"], name: "index_students_on_name"
-  end
-
-  create_table "tests", force: :cascade do |t|
-    t.integer "course_id"
-    t.integer "student_id"
-    t.integer "test_num", default: 1, null: false
-    t.boolean "retake", default: false, null: false
-    t.boolean "makeup", default: false, null: false
-    t.integer "mod_by", null: false
-    t.integer "test_type", default: 0, null: false
-    t.integer "result", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_tests_on_course_id"
-    t.index ["student_id"], name: "index_tests_on_student_id"
   end
 
   create_table "users", force: :cascade do |t|

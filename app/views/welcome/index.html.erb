@@ -16,6 +16,19 @@
           </div>
       </div>
     <% end %>
-  <% end %>
+  <% elsif current_user && !current_user.inactive? %>
+    <% Course.all.each do |c| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail class-thumbnail">
+          <div class="caption">
+            <%= link_to c do %>
+              <div><%= image_tag('mas_massage_tables.png', class: 'img-responsive', alt: 'Massage Tables for MAS') %></div>
+              <h3 class="text-center"><%= "#{c.course_id}  -  #{c.shift.humanize}" %></span></h3>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <%end%>
 
 </div>

@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :test do
     course nil
     student nil
-    test_num 1
+    exam_num 1
     retake false
     makeup false
     mod_by 1
