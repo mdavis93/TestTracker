@@ -38,7 +38,6 @@ gem 'thor', '0.20.0'
 group :development, :test do
   gem 'byebug'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
@@ -47,6 +46,7 @@ end
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'  # Uses Bootstrap 3
+gem 'faker'
 gem 'devise'
 gem 'figaro'
 gem 'font-awesome-rails', '~> 4.7.0'
