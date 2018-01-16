@@ -2,5 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready( function() {
-    $('#course_test_table').DataTable();
+    $('.table.course_test_table').DataTable( {
+        "pageLength": 25
+    });
 });

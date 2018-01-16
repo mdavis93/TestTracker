@@ -15,18 +15,18 @@ Session.destroy_all
 Cohort.destroy_all
 Schedule.destroy_all
 
-print 'Creating Cohort...'
+print 'Creating Cohort.....'
 Cohort.create(cohort_id: 'D0817L')
 c = Cohort.first
-puts 'Done!'
+puts "Done!\t#{Cohort.count} Entries Created"
 
 print 'Creating Students...'
-5.times do
-  Student.create(cohort_id: c.id, name: Faker::Name.name)
+50.times do
+  Student.create(cohort_id: c.id, name: Faker::Name.unique.name)
 end
-puts 'Done!'
+puts "Done!\t#{Student.count} Entries Created"
 
-print 'Creating Users...'
+print 'Creating Users......'
 User.create(
   email: 'admin@testtracker.com',
   password: 'helloworld',
@@ -49,7 +49,7 @@ User.all.each do |u|
   u.instructor = Instructor.create(user_id: u.id, campus_id: 18)
   u.save
 end
-puts 'Done!'
+puts "Done!\t#{User.count} Entries Created"
 
 print 'Creating Sessions...'
 Session.find_or_create_by(
@@ -58,35 +58,39 @@ Session.find_or_create_by(
   last_day: Date.new(2018, 2, 4),
   deadline: Date.new(2018, 2, 16)
 )
-puts 'Done!'
+Session.find_or_create_by(
+  name: 'JAN2018B',
+  first_day: Date.new(2018, 2, 5),
+  last_day: Date.new(2018, 3, 11),
+  deadline: Date.new(2018, 3, 23)
+)
+puts "Done!\t#{Session.count} Entries Created"
 
 print 'Creating Courses...'
-Course.create(course_id: 'MAK111', session: Session.first, instructor_id: Instructor.all.sample.id, shift: 0)
-Course.create(course_id: 'PEC111', session: Session.first, instructor_id: Instructor.all.sample.id, shift: 0)
-Course.create(course_id: 'BUS119', session: Session.first, instructor_id: Instructor.all.sample.id, shift: 0)
-Course.create(course_id: 'APP121', session: Session.first, instructor_id: Instructor.all.sample.id, shift: 0)
-puts 'Done!'
+Course.create(course_id: 'MAK111', session: Session.all.sample, instructor_id: Instructor.all.sample.id, shift: 0)
+Course.create(course_id: 'PEC111', session: Session.all.sample, instructor_id: Instructor.all.sample.id, shift: 0)
+Course.create(course_id: 'BUS119', session: Session.all.sample, instructor_id: Instructor.all.sample.id, shift: 0)
+Course.create(course_id: 'APP121', session: Session.all.sample, instructor_id: Instructor.all.sample.id, shift: 0)
+puts "Done!\t#{Course.count} Entries Created"
 
-print 'Creating Students...'
-25.times do
+print 'Creating Schedules...'
+15.times do
   Student.all.sample.schedules.create(course_id: Course.all.sample.id, repeat: false)
 end
-puts 'Done!'
+puts "Done!\t#{Schedule.count} Entries Created"
 
-print 'Creating Exams...'
-5.times do
-  Course.all.each do |c|
-    Student.all.each do |s|
-      c.exams.create(
-        student_id: s.id,
-        exam_num: 1,
-        retake: rand(2),
-        makeup: rand(2),
-        mod_by: User.first.id,
-        exam_type: rand(2) == 1 ? 'written' : 'practical',
-        result: rand(4)
-      )
-    end
+print 'Creating Exams......'
+Course.all.each do |c|
+  rand(10..25).times do |n|
+    c.exams.create(
+      student_id: Student.find(n + 1).id,
+      exam_num: 1,
+      retake: rand(2),
+      makeup: rand(2),
+      mod_by: User.first.id,
+      exam_type: rand(2) == 1 ? 'written' : 'practical',
+      result: rand(5)
+    )
   end
 end
-puts 'Done!'
+puts "Done!\t#{Exam.count} Entries Created"

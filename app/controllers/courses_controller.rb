@@ -11,8 +11,6 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @written_exams = Exam.where(exam_type: 'written', course_id: @course.id)
-    @practical_exams = Exam.where(exam_type: 'practical', course_id: @course.id)
   end
 
   def new

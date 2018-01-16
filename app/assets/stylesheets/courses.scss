@@ -1,3 +1,24 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.course-table {
+  overflow-y: auto;
+  border-radius: 5px;
+  background-color: white;
+  padding: 1em;
+
+  & td {
+    white-space: nowrap;
+  }
+}
+
+.table-hover {
+  & .bg-danger:hover{
+    background-color: rgb(255, 217, 216);
+  }
+
+  & .bg-warning:hover{
+    background-color: rgb(247, 237, 200);
+  }
+}

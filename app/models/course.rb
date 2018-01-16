@@ -9,6 +9,6 @@ class Course < ApplicationRecord
 
 
   def tests_by_student_id(student_id)
-    Exam.find_by(student_id: student_id)
+    Exam.where(student_id: student_id, course_id: id)
   end
 end

@@ -96,7 +96,7 @@ body {
 #main_content {
   width: 100%;
   position: absolute;
-  padding: 15px;
+  padding: 15px 15px 150px;
   transition: 0.1s;
 }
 
@@ -141,6 +141,13 @@ body {
   font-size: 3em;
 }
 
+.font-2x {
+  font-size: 2em;
+}
+
+.panel_shadow {
+  box-shadow: 1px 5px 15px 2px #535353
+}
 
 
 

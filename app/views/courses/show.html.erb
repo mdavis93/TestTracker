@@ -4,17 +4,37 @@
   </div>
 </div>
 
+<!-- Panels -->
 <div class="row">
   <div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="panel panel-primary">
+    <div class="panel panel-primary panel_shadow">
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-3">
-            <i class="fa fa-bullhorn fa-5x"></i>
+            <i class="fa fa-calendar fa-4x"></i>
           </div>
           <div class="col-xs-9 text-right">
-            <div class="font-3x">26</div>
-            <div>New Comments!</div>
+            <div class="font-2x">Deadline</div>
+            <div><%= @course.session.deadline.strftime("%b %e, %Y") %></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer text-center">
+        <small><%= time_diff(Date.today, @course.session.deadline) %> <%= @course.session.deadline > Date.today ? " away." : " ago." %></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="panel panel-warning panel_shadow">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-warning fa-4x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="font-2x"><%= @course.exams.where(result: 'absent').count + @course.exams.where(result: 'failed').count %></div>
+            <div>Missing Makeups</div>
           </div>
         </div>
       </div>
@@ -29,78 +49,34 @@
   </div>
 </div>
 
+<!-- Table -->
 <% if @course.students.count > 0 %>
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            'Written Test 1A'
-          </div>
-          <table class="table table-hover">
-            <thead>
-            <tr>
-              <th>Cohort</th>
-              <th>Student</th>
-              <th>Absent</th>
-              <th>Pass</th>
-              <th>Markdown</th>
-              <th>Fail</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <% @written_exams.each do |exam| %>
-              <% if exam.session == 'A' %>
-                <tr>
-                  <td><%= exam.student.cohort.cohort_id %></td>
-                  <td><%= exam.student.name %></td>
-                  <td><%= fa_icon 'circle' if exam.result == 'absent' %></td>
-                  <td><%= fa_icon 'check' if exam.result == 'pass' %></td>
-                  <td><%= fa_icon 'check-circle' if exam.result == 'markdown' %></td>
-                  <td><%= fa_icon 'circle-thin' if exam.result == 'fail' %></td>
-                </tr>
-              <% end %>
-            <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
   <div class="row">
-    <div class="col-md-6 col-sm-12">
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          'Practical Test 1A'
-        </div>
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>Cohort</th>
-            <th>Student</th>
-            <th>Absent</th>
-            <th>Pass</th>
-            <th>Markdown</th>
-            <th>Fail</th>
-          </tr>
-          </thead>
-          <tbody>
+    <div class="col-lg-9 col-md-8 col-sm-12 course-table">
+      <table class="table table-hover table-bordered course_test_table" width="100%">
+        <thead class="cortiva-gold-background">
+        <tr>
+          <th>Cohort</th>
+          <th>Student</th>
+          <th>Exam</th>
+          <th>Absent</th>
+          <th>Pass</th>
+          <th>Markdown</th>
+          <th>Fail</th>
+        </tr>
+        </thead>
+        <tbody>
 
-          <% @practical_exams.each do |exam| %>
-            <% if exam.session == 'A' %>
-              <tr>
-                <td><%= exam.student.cohort.cohort_id %></td>
-                <td><%= exam.student.name %></td>
-                <td><%= fa_icon 'circle' if exam.result == 'absent' %></td>
-                <td><%= fa_icon 'check' if exam.result == 'pass' %></td>
-                <td><%= fa_icon 'check-circle' if exam.result == 'markdown' %></td>
-                <td><%= fa_icon 'circle-thin' if exam.result == 'fail' %></td>
-              </tr>
-            <% end %>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
+        <% @course.exams.each do |exam| %>
+          <tr <%= row_background_color(exam) %> >
+            <td><%= exam.student.cohort.cohort_id %></td>
+            <td><%= exam.student.name %></td>
+            <td><%= "#{exam.exam_num}#{exam.session} - #{exam.exam_type.humanize}" %></td>
+            <%= generate_apmf_rows(exam).html_safe %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 <% end %>
