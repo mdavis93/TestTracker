@@ -14,11 +14,49 @@
 }
 
 .table-hover {
-  & .bg-danger:hover{
-    background-color: rgb(255, 217, 216);
+  & tbody tr {
+    cursor: default;
   }
 
-  & .bg-warning:hover{
-    background-color: rgb(247, 237, 200);
+  & .bg-danger {
+    background-color: #f28e98;
+    &:hover {
+      background-color: #f2747d;
+    }
+  }
+
+  & .bg-warning {
+    background-color: #ffefa5;
+    &:hover {
+      background-color: #ffe344;
+    }
+  }
+
+  & .bg-primary {
+    background-color: #6b88b7;
+    &:hover {
+      background-color: #337ab7;
+    }
+  }
+
+  & .bg-success {
+    background-color: #a0d798;
+    &:hover {
+      background-color: #71cd5c;
+    }
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  .fa {
+    display: none !important;
+  }
+
+  .text-right {
+    text-align: center !important;
+  }
+
+  h1 {
+    font-size: 190% !important;
   }
 }

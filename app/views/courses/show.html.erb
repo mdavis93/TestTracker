@@ -6,14 +6,14 @@
 
 <!-- Panels -->
 <div class="row">
-  <div class="col-lg-3 col-md-4 col-sm-6">
+  <div class="col-lg-3 col-md-4 col-xs-6">
     <div class="panel panel-primary panel_shadow">
       <div class="panel-heading">
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-sm-3">
             <i class="fa fa-calendar fa-4x"></i>
           </div>
-          <div class="col-xs-9 text-right">
+          <div class="col-sm-9 text-right">
             <div class="font-2x">Deadline</div>
             <div><%= @course.session.deadline.strftime("%b %e, %Y") %></div>
           </div>
@@ -25,14 +25,14 @@
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-4 col-sm-6">
+  <div class="col-lg-3 col-md-4 col-xs-6">
     <div class="panel panel-warning panel_shadow">
       <div class="panel-heading">
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-sm-3">
             <i class="fa fa-warning fa-4x"></i>
           </div>
-          <div class="col-xs-9 text-right">
+          <div class="col-sm-9 text-right">
             <div class="font-2x"><%= @course.exams.where(result: 'absent').count + @course.exams.where(result: 'failed').count %></div>
             <div>Missing Makeups</div>
           </div>
@@ -52,17 +52,14 @@
 <!-- Table -->
 <% if @course.students.count > 0 %>
   <div class="row">
-    <div class="col-lg-9 col-md-8 col-sm-12 course-table">
+    <div class="col-lg-6 col-md-8 col-sm-12 course-table">
       <table class="table table-hover table-bordered course_test_table" width="100%">
         <thead class="cortiva-gold-background">
         <tr>
           <th>Cohort</th>
           <th>Student</th>
           <th>Exam</th>
-          <th>Absent</th>
-          <th>Pass</th>
-          <th>Markdown</th>
-          <th>Fail</th>
+          <th>Result</th>
         </tr>
         </thead>
         <tbody>
@@ -72,7 +69,7 @@
             <td><%= exam.student.cohort.cohort_id %></td>
             <td><%= exam.student.name %></td>
             <td><%= "#{exam.exam_num}#{exam.session} - #{exam.exam_type.humanize}" %></td>
-            <%= generate_apmf_rows(exam).html_safe %>
+            <%= generate_result_cell(exam).html_safe %>
           </tr>
         <% end %>
         </tbody>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'reports/index'
+
   resources :courses
 
   devise_for :users
