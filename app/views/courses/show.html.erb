@@ -33,7 +33,7 @@
             <i class="fa fa-warning fa-4x"></i>
           </div>
           <div class="col-sm-9 text-right">
-            <div class="font-2x"><%= @course.exams.where(result: 'absent').count + @course.exams.where(result: 'failed').count %></div>
+            <div class="font-2x"><%= @course.exams.where(result: 'absent').count + @course.exams.where(result: 'retake').count %></div>
             <div>Missing Makeups</div>
           </div>
         </div>
@@ -53,7 +53,7 @@
 <% if @course.students.count > 0 %>
   <div class="row">
     <div class="col-lg-6 col-md-8 col-sm-12 course-table">
-      <table class="table table-hover table-bordered course_test_table" width="100%">
+      <table class="table table-hover table-bordered course_exam_table" width="100%">
         <thead class="cortiva-gold-background">
         <tr>
           <th>Cohort</th>
@@ -65,9 +65,9 @@
         <tbody>
 
         <% @course.exams.each do |exam| %>
-          <tr <%= row_background_color(exam) %> >
+          <tr>
             <td><%= exam.student.cohort.cohort_id %></td>
-            <td><%= exam.student.name %></td>
+            <td><%= exam.student.name.split(' ').reverse.join(', ') %></td>
             <td><%= "#{exam.exam_num}#{exam.session} - #{exam.exam_type.humanize}" %></td>
             <%= generate_result_cell(exam).html_safe %>
           </tr>
@@ -77,3 +77,5 @@
     </div>
   </div>
 <% end %>
+
+<%= render 'partials/exams/exam_entry' %>

@@ -15,3 +15,24 @@
 //= require bootstrap
 //= require_tree .
 
+
+$(document).ready(function() {
+
+    $(document).on('ajax:success', 'form.bookmark_form', function(event, data, status, xhr) {
+        $(".log").text( "Triggered AjaxComplete Handler");
+    });
+
+    $(document).on('ajax:error', 'form.bookmark_form', function(event, jqxhr, settings, thrownError){
+        var html = '<h4 class="text-left">There are ' + event.detail[0].length + ' Errors:</h4><ul>';
+
+        for (var msg in event.detail[0]) {
+            html += '<li>' + event.detail[0][msg] + '</li>';
+        }
+        html += '</ul>';
+        var $error_explanation = $('#error_explanation');
+
+        $error_explanation.html(html);
+        $error_explanation.removeClass("bg-danger text-danger");
+        $error_explanation.addClass("alert alert-danger");
+    });
+});

@@ -18,32 +18,60 @@
     cursor: default;
   }
 
-  & .bg-danger {
+  & .bg-failed {
     background-color: #f28e98;
     &:hover {
       background-color: #f2747d;
     }
   }
 
-  & .bg-warning {
+  & .bg-absent {
     background-color: #ffefa5;
     &:hover {
       background-color: #ffe344;
     }
   }
 
-  & .bg-primary {
-    background-color: #6b88b7;
+  & .bg-retake {
+    background-color: #ffcdfb;
     &:hover {
-      background-color: #337ab7;
+      background-color: #f57bf5;
     }
   }
 
-  & .bg-success {
+  & .bg-markdown {
+    background-color: #85a8e3;
+    &:hover {
+      background-color: #2b86e0;
+    }
+  }
+
+  & .bg-pass {
     background-color: #a0d798;
     &:hover {
       background-color: #71cd5c;
     }
+  }
+}
+
+.badge {
+  &.badge_exam_status{
+    padding: 0.5em;
+  }
+  &.badge_pass {
+    background-color: #009700;
+  }
+  &.badge_markdown {
+    background-color: royalblue;
+  }
+  &.badge_absent {
+    background-color: orange;
+  }
+  &.badge_failed {
+    background-color: orangered;
+  }
+  &.badge_retake {
+    background-color: darkorange;
   }
 }
 
