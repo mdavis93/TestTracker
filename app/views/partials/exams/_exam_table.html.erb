@@ -11,7 +11,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
       <div class="form-group">
         <%= f.label "Bookmark Topic" %>
         <%= collection_select(:course, :course_id, Course.all, :id, :course_id, {prompt: false, selected: @course.id}, {class: 'form-control'}) %>
@@ -33,7 +33,7 @@
         <% @course.exams.each do |exam| %>
           <tr>
             <td><%= text_field_tag('student_cohort', exam.student.cohort.cohort_id, placeholder: 'Student Cohort', size: '7', maxlength: 7) %></td>
-            <td><%= text_field_tag('student_name', exam.student.name.split(' ').reverse.join(', '), placeholder: 'Student Name', size: '30', maxlength: 30) %></td>
+            <td><%= text_field_tag('student_name', exam.student.name.split(' ').reverse.join(', '), placeholder: 'Student Name', size: '20', maxlength: 30) %></td>
             <td><%= "#{exam.exam_num}#{exam.session} - #{exam.exam_type.humanize}" %></td>
             <td><%= select_tag 'exam_result', options_for_select(exam_status_for_select_options, exam_status_for_select_options(exam)), include_blank: true %>
           </tr>
@@ -50,4 +50,5 @@
     </div>
   </div>
 <% end %>
-Test
+
+<% puts @exam %>

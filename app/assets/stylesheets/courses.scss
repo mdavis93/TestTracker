@@ -65,7 +65,9 @@
     background-color: royalblue;
   }
   &.badge_absent {
-    background-color: orange;
+    background-color: white;
+    border: 1px solid orange;
+    color: black;
   }
   &.badge_failed {
     background-color: orangered;
@@ -73,6 +75,11 @@
   &.badge_retake {
     background-color: darkorange;
   }
+}
+
+
+#missing_makeup_info_panel {
+  cursor: default;
 }
 
 @media only screen and (max-width: 475px) {
