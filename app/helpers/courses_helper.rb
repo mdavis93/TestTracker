@@ -5,32 +5,17 @@ module CoursesHelper
   def generate_result_cell(exam)
     case exam.result
     when 'absent'
-      '<td>Absent</td>'
+      '<td class=text-right><span class="badge badge_exam_status badge_absent">Absent</td>'
     when 'pass'
-      '<td>Pass</td>'
+      '<td><span class="badge badge_exam_status badge_pass">Pass</span></td>'
     when 'markdown'
-      '<td>Markdown</td>'
+      '<td><span class="badge badge_exam_status badge_markdown">Pass</span</td>'
+    when 'retake'
+      '<td class=text-right><span class="badge badge_exam_status badge_retake">Retake</span></td>'
     when 'failed'
-      '<td>1st Fail</td>'
-    when 'failed_final'
-      '<td>Failed</td>'
+      '<td><span class="badge badge_exam_status badge_failed">Failed</span</td>'
     else
       "<td class='danger_row'></td>"
-    end
-  end
-
-  def row_background_color(exam)
-    case exam.result
-    when 'absent', 'failed'
-      'class=bg-warning'
-    when 'failed_final'
-      'class=bg-danger'
-    when 'markdown'
-      'class=bg-primary'
-    when 'pass'
-      'class=bg-success'
-    else
-      ''
     end
   end
 

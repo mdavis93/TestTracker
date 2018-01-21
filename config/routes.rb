@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   get 'reports/index'
 
-  resources :courses
+  resources :courses do
+    resources :exams
+  end
 
   devise_for :users
+
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
