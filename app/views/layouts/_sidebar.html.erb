@@ -12,7 +12,7 @@
 
         <div class="col-xs-6">
           <% if @course %>
-            <%= link_to 'Add Exam', new_course_exam_path(course_id: @course.id), remote: true, class: 'btn btn-default' %>
+            <%= link_to 'Manage Exams', new_course_exam_path(course_id: @course.id), remote: true, class: 'btn btn-default' %>
           <% end %>
         </div>
       </div>

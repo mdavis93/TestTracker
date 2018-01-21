@@ -1,6 +1,7 @@
 class ExamsController < ApplicationController
 
   def create
+    puts "\nIncoming Params\n#{params.inspect}"
   end
 
   def new

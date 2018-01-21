@@ -1,7 +1,7 @@
 var $course_exam_modal = $('#course_exam_modal');
 
 $course_exam_modal.find('h4').html(
-    "<i class='fa fa-file-text-o'></i>&emsp;Add/Edit Exam"
+    "<i class='fa fa-file-text-o'></i>&emsp;Add/Edit Exam&emsp;&mdash;&emsp;<%= @course.course_id %>"
 );
 
 $('.modal-body').html('<%= j render partial: "/partials/exams/exam_table", locals: { course: @course, exams: @course.exams } %>')

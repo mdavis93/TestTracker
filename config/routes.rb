@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   get 'reports/index'
 
   resources :courses do
-    resources :exams, only: %i[index new edit]
+    resources :exams
   end
-  post :incoming, to: 'incoming#create'
 
   devise_for :users
 
