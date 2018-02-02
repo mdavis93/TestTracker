@@ -76,12 +76,13 @@ ActiveRecord::Schema.define(version: 20180112043903) do
 
   create_table "students", force: :cascade do |t|
     t.integer "cohort_id"
-    t.string "name", null: false
+    t.string "fname", null: false
+    t.string "lname", null: false
     t.integer "status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cohort_id"], name: "index_students_on_cohort_id"
-    t.index ["name"], name: "index_students_on_name"
+    t.index [nil], name: "index_students_on_name"
   end
 
   create_table "users", force: :cascade do |t|

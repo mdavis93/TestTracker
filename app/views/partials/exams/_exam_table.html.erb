@@ -11,33 +11,6 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12" id='add_new_exam'>
-      <div class="form-group">
-        <%= f.label "Record New Exam" %>
-        <table class="table table-hover table-bordered" width="100%">
-          <thead>
-          <tr>
-            <th>Cohort</th>
-            <th>Student</th>
-            <th>Exam</th>
-            <th>Exam Type</th>
-            <th>Result</th>
-          </tr>
-          </thead>
-          <tbody>
-
-          <tr>
-            <td><%= text_field_tag('student_cohort', nil, placeholder: 'Cohort', size: '7', maxlength: 7) %></td>
-            <td><%= text_field_tag('student_name', nil, placeholder: 'Student Name', size: '20', maxlength: 30) %></td>
-            <td><%= select_tag 'exam_number', options_for_select(%w(1A 2A 1B 2B)), include_blank: true %></td>
-            <td><%= select_tag 'exam_type', options_for_select(%w(Written Practical)), include_blank: true %></td>
-            <td><%= select_tag 'exam_result', options_for_select(exam_status_for_select_options), include_blank: true %>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
     <div class="col-sm-12">
       <table class="table table-hover table-bordered" width="100%">
         <thead>
@@ -52,17 +25,16 @@
         </thead>
         <tbody>
 
-        <form-group></form-group>
-        <% @course.exams.each do |exam| %>
-          <tr>
-            <td><%= text_field_tag('student_cohort', exam.student.cohort.cohort_id, placeholder: 'Student Cohort', size: '7', maxlength: 7) %></td>
-            <td><%= text_field_tag('student_name', exam.student.name.split(' ').reverse.join(', '), placeholder: 'Student Name', size: '20', maxlength: 30) %></td>
-            <td><%= select_tag 'exam_number', options_for_select(%w(1A 2A 1B 2B), "#{exam.exam_num}#{exam.session}"), placeholder: 'Exam Number' %></td>
-            <td><%= select_tag 'exam_type', options_for_select(%w(Written Practical), "#{exam.exam_type.humanize}"), placeholder: 'Exam Result' %></td>
-            <td><%= select_tag 'exam_result', options_for_select(exam_status_for_select_options, exam_status_for_select_options(exam)), include_blank: true %>
-            <td class="text-center"><%= fa_icon 'trash' %> </td>
-          </tr>
-        <% end %>
+          <% @course.exams.each do |exam| %>
+            <tr>
+              <td><%= text_field_tag('student_cohort', exam.student.cohort.cohort_id, placeholder: 'Student Cohort', size: '7', maxlength: 7) %></td>
+              <td><%= text_field_tag('student_name', "#{exam.student.lname}, #{exam.student.fname}", placeholder: 'Student Name', size: '20', maxlength: 30) %></td>
+              <td><%= select_tag 'exam_number', options_for_select(%w(1A 2A 1B 2B), "#{exam.exam_num}#{exam.session}"), placeholder: 'Exam Number' %></td>
+              <td><%= select_tag 'exam_type', options_for_select(%w(Written Practical), "#{exam.exam_type.humanize}"), placeholder: 'Exam Result' %></td>
+              <td><%= select_tag 'exam_result', options_for_select(exam_status_for_select_options, exam_status_for_select_options(exam)), include_blank: true %>
+              <td class="text-center"><%= fa_icon 'trash' %> </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

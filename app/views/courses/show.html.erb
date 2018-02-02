@@ -67,7 +67,7 @@
         <% @course.exams.each do |exam| %>
           <tr>
             <td><%= exam.student.cohort.cohort_id %></td>
-            <td><%= exam.student.name.split(' ').reverse.join(', ') %></td>
+            <td><%= exam.student.lname %>, <%= exam.student.fname %></td>
             <td><%= "#{exam.exam_num}#{exam.session} - #{exam.exam_type.humanize}" %></td>
             <%= generate_result_cell(exam).html_safe %>
           </tr>

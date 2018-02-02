@@ -22,10 +22,11 @@ puts "Done!\t#{Cohort.count} Entries Created"
 
 print 'Creating Students...'
 50.times do
-  s = Student.new(cohort_id: c.id, name: Faker::Name.unique.name)
-  while s.name.split(' ').count > 2 do
-    s = Student.new(cohort_id: c.id, name: Faker::Name.unique.name)
-  end
+  s_name = Faker::Name.unique.name
+  s_name = Faker::Name.unique.name while s_name.split.count > 2
+  s = Student.new(cohort_id: c.id,
+                  fname: s_name.split[0],
+                  lname: s_name.split[1])
   s.save
 end
 puts "Done!\t#{Student.count} Entries Created"
