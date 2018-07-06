@@ -28,7 +28,9 @@ This project makes use of the following gems:
 ## Databases
 This project uses several tables, with many relations.  This was the most fun part of the project for me, as I was able to fully visualize the relationship of the data I was collecting.  It also forced me to __really__ think about what it is I wanted to accomplish, and what information would be needed.
 
-I used [_Lucidchart_](https://www.lucidchart.com) to create a [visual represenataion](https://www.lucidchart.com/documents/view/40673846-0f6f-480f-8636-4d25a73a25dc/0) of tables and data to be used within the project, and their relation to one another.
+I used [_Lucidchart_](https://www.lucidchart.com) to create a visual represenataion of tables and data to be used within the project, and their relation to one another.
+
+>![Database Table Relationships](http://i66.tinypic.com/2z6cmzk.jpg)
  
  
  ## Challenges
