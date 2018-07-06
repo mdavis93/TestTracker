@@ -32,20 +32,20 @@ puts "Done!\t#{Student.count} Entries Created"
 
 print 'Creating Users......'
 User.create(
-  email: 'admin@testtracker.com',
-  password: 'helloworld',
-  confirmed_at: Time.now,
-  role: :instructor,
-  fname: 'Michael',
-  lname: 'Davis'
-)
-
-User.create(
   email: 'test@testtracker.com',
   password: 'helloworld',
   confirmed_at: Time.now,
   role: :instructor,
   fname: 'Test',
+  lname: 'Instructor'
+)
+
+User.create(
+  email: 'other@testtracker.com',
+  password: 'helloworld',
+  confirmed_at: Time.now,
+  role: :instructor,
+  fname: 'Another',
   lname: 'Instructor'
 )
 

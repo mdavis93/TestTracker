@@ -14,7 +14,7 @@ $(document).ready( function() {
             "<i class='fa fa-file-text-o'></i>&emsp;Add/Edit Exam"
         );
 
-        $('.modal-body').html('<%= j render partial: "/partials/exams/exam_table", locals: { course: @course, exams: @course.exams, makeup: true } %>'.html_safe)
+        $('.modal-body').html('<strong><em>TODO</em></strong>:<br> AJAX Request to display only students in this class that have incomplete coursework.  Result badges <strong>ABSENT</strong> and <strong>RETAKE</strong> are considered as bing incomplete since the student still has a remaining attempt at passing the exam.');
 
         $course_exam_modal.modal('show');
     });
